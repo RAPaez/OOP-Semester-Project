@@ -1,2 +1,2 @@
 # OOP-Semester-Project
-For my OOP Class
+I will be creating a flashcard system that will include flashcards, folders that conatain flashcards, and a review system that will go over the cards, flip them, and in more advanced versions will give the user the option to choose the review system used, such as the Sebastian's Leitner's Bare-Bones Leitner System, the Piotr Woznink Revolutionary Super Memo system, or the Pimslev's effective language learning method. The user could also take a quiz to determine what system would generally work better for them. It would also keep track of the scores on each individual flashcards, where spaced repition would depend on how much the user gets a flashcard wrong than right. 
