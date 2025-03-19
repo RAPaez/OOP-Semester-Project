@@ -1,4 +1,4 @@
-// Version (1.0.0 - alpha)
+// Version (1.0.alpha)
 import java.util.ArrayList;
 import java.util.Scanner;
 
