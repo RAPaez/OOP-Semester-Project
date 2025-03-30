@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="600" prefWidth="800" spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainViewController">
+    <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true">
+        <content>
+            <FlowPane fx:id="folderFlowPane" hgap="10" prefHeight="598.0" prefWidth="798.0" prefWrapLength="780.0" style="-fx-padding: 10;" vgap="10">
+                <Button fx:id="addFolderButton" onAction="#handleAddFolder" style="-fx-font-size: 24px; -fx-pref-width: 100px; -fx-pref-height: 100px;" text="+" />
+            </FlowPane>
+        </content>
+    </ScrollPane>
+</VBox>
