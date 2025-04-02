@@ -1,14 +1,17 @@
 // Ricardo Paez, Semester Project: MainViewController class
 
 package application;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +40,7 @@ public class MainViewController { // Manages user input for MainView.fxml
         dialog.setHeaderText("Create a new folder");
         dialog.setContentText("Folder name:"); // Sets the text in the box the user enters information in
 
-        Optional<String> result = dialog.showAndWait(); // Shows the dialog and waits for the user response, the user has to press the enter key to continue
+        Optional<String> result = dialog.showAndWait(); // Shows the dialog and waits for the user response, the user has to press the enter key or (Ok/cancel) button to continue
         result.ifPresent(name -> {
             Folder folder = new Folder(name); // Creates a folder
             folders.add(folder); // Adds the folder to big ArrayList of folders
@@ -58,11 +61,22 @@ public class MainViewController { // Manages user input for MainView.fxml
     }
     
     private void openFolderView(Folder folder) {
-    	Alert alert = new Alert(AlertType.INFORMATION);
-    	alert.setTitle("Open Folder");
-    	alert.setHeaderText(null);
-    	alert.setContentText("Would open folder: " + folder.getName());
-    	alert.showAndWait();
+    	try {
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("FolderView.fxml"));
+    		Parent root = loader.load();
+    		
+    		// Get the controller and pass the folder
+    		FolderViewController controller = loader.getController();
+    		controller.setFolder(folder);
+    		
+    		// Open in a new window
+    		Stage stage = new Stage();
+    		stage.setTitle("Flashcards - " + folder.getName());
+    		stage.setScene(new Scene(root));
+    		stage.show();
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
     	
     }
 }
