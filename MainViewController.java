@@ -26,12 +26,6 @@ public class MainViewController { // Manages user input for MainView.fxml
     @FXML private ScrollPane scrollPane;
     
     private List<Folder> folders = new ArrayList<>(); // Creates an ArrayList for all the potential folders
-
-    /*@FXML
-    public void initialize() {
-        // Will load saved data and populate folders
-    }
-    */
     
     @FXML
     private void handleAddFolder() {

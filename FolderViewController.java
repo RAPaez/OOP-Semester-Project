@@ -2,10 +2,14 @@ package application;
 
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
 import javafx.scene.control.ScrollPane;
 
 import java.util.Optional;
@@ -68,10 +72,27 @@ public class FolderViewController {
 	    }
 	    
 	    private void showFlashcardDetails(Flashcard card) {
-	    	TextInputDialog edit = new TextInputDialog(card.getBack()); // Creates a new TextInputDialog box
-     	   	edit.setTitle("Flashcard Answer"); // Sets the thingy on top to "New Flashcard"
-     	   	edit.setHeaderText("Front: " + card.getFront());
-     	   	edit.setContentText("Back:");
-     	   	edit.showAndWait();
+	        try {
+	            FXMLLoader loader = new FXMLLoader(getClass().getResource("FlashcardView.fxml"));
+	            Parent root = loader.load();
+
+	            FlashcardViewController controller = loader.getController();
+	            controller.setFlashcard(card);
+
+	            Stage stage = new Stage();
+	            stage.setTitle("Flashcard");
+
+	            // Setting default size
+	            Scene scene = new Scene(root, 500, 400); // <-- default size
+	            stage.setScene(scene);
+	            
+	            //Prevent too-small resizing
+	            stage.setMinWidth(400);  
+	            stage.setMinHeight(300); 
+	            stage.show();
+
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
 	    }
 }

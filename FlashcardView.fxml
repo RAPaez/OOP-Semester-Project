@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Priority?>
+
+<VBox alignment="CENTER" spacing="20" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FlashcardViewController">
+
+    <!-- Flashcard wrapper with grow priority -->
+    <StackPane fx:id="flashcardPane"
+    		   prefWidth="400"
+    		   prefHeight="300"
+               VBox.vgrow="ALWAYS"
+               maxHeight="Infinity"
+               maxWidth="Infinity"
+               style="-fx-border-color: gray; -fx-background-color: white; -fx-border-width: 2px;">
+        <Label fx:id="cardText" alignment="CENTER" style="-fx-font-size: 18px; -fx-text-alignment: center;" wrapText="true" />
+    </StackPane>
+
+    <!-- Flip button -->
+    <Button onAction="#handleFlip" text="Flip" />
+</VBox>
